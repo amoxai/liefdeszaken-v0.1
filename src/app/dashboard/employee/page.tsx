@@ -172,7 +172,7 @@ export default async function EmployeeDashboardPage() {
                         {order.status === 'processing' && 'In behandeling'}
                       </span>
                     </td>
-                    <td style={{ fontWeight: 600 }}>€{Number(order.total).toFixed(2)}</td>
+                    <td style={{ fontWeight: 600 }}>ï¿½{Number(order.total).toFixed(2)}</td>
                     <td>
                       <Link
                         href={`/dashboard/employee/orders/${order.id}`}

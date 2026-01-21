@@ -66,7 +66,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <p className="footer-copyright">
-          © {currentYear} Liefdeszaken. Alle rechten voorbehouden.
+          ï¿½ {currentYear} Liefdeszaken. Alle rechten voorbehouden.
         </p>
         <div className="footer-payment-methods">
           <span className="footer-payment-method">iDEAL</span>

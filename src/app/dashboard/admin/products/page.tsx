@@ -15,7 +15,7 @@ interface Product {
   stock_quantity: number;
   is_active: boolean;
   is_featured: boolean;
-  category: { name: string } | null;
+  category: { name: string }[] | null;
   created_at: string;
 }
 
@@ -42,7 +42,7 @@ export default function ProductsPage() {
     if (error) {
       toast.error('Kon producten niet laden');
     } else {
-      setProducts(data || []);
+      setProducts((data as Product[]) || []);
     }
     
     setIsLoading(false);
@@ -172,8 +172,8 @@ export default function ProductsPage() {
                   <td style={{ fontFamily: 'monospace', fontSize: '0.85rem' }}>
                     {product.sku || '-'}
                   </td>
-                  <td>{product.category?.name || '-'}</td>
-                  <td style={{ fontWeight: 600 }}>€{Number(product.price).toFixed(2)}</td>
+                  <td>{product.category?.[0]?.name || '-'}</td>
+                  <td style={{ fontWeight: 600 }}>EUR {Number(product.price).toFixed(2)}</td>
                   <td>
                     <span style={{ 
                       color: product.stock_quantity === 0 ? '#ef4444' : 

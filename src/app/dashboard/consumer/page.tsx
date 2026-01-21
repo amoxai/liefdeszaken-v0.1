@@ -85,7 +85,7 @@ export default async function ConsumerDashboardPage() {
               <ShoppingBag size={24} />
             </div>
           </div>
-          <div className="dashboard-stat-value">€{totalSpent.toFixed(2)}</div>
+          <div className="dashboard-stat-value">ï¿½{totalSpent.toFixed(2)}</div>
           <div className="dashboard-stat-label">Totaal uitgegeven</div>
         </div>
 
@@ -173,7 +173,7 @@ export default async function ConsumerDashboardPage() {
                         {order.status === 'cancelled' && 'Geannuleerd'}
                       </span>
                     </td>
-                    <td style={{ fontWeight: 600 }}>€{Number(order.total).toFixed(2)}</td>
+                    <td style={{ fontWeight: 600 }}>ï¿½{Number(order.total).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>

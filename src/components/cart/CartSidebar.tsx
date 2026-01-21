@@ -97,7 +97,7 @@ export default function CartSidebar() {
                       </Link>
                     </h4>
                     <span className="cart-item-price">
-                      €{(item.price * item.quantity).toFixed(2)}
+                      ï¿½{(item.price * item.quantity).toFixed(2)}
                     </span>
 
                     <div className="cart-item-actions">
@@ -145,15 +145,15 @@ export default function CartSidebar() {
             <div className="cart-summary">
               <div className="cart-summary-row subtotal">
                 <span>Subtotaal</span>
-                <span>€{subtotal.toFixed(2)}</span>
+                <span>ï¿½{subtotal.toFixed(2)}</span>
               </div>
               <div className="cart-summary-row tax">
                 <span>BTW (21%)</span>
-                <span>€{tax.toFixed(2)}</span>
+                <span>ï¿½{tax.toFixed(2)}</span>
               </div>
               <div className="cart-summary-row total">
                 <span>Totaal</span>
-                <span>€{total.toFixed(2)}</span>
+                <span>ï¿½{total.toFixed(2)}</span>
               </div>
             </div>
 

@@ -54,7 +54,7 @@ export default function ProductFilters({ categories }: ProductFiltersProps) {
               checked={!currentCategory}
               onChange={() => updateFilter('category', null)}
             />
-            <span>Alle categorieën</span>
+            <span>Alle categorieen</span>
           </label>
           {categories.map((category) => (
             <label key={category.id} className="product-filter-option">

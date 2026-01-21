@@ -1,4 +1,4 @@
-'use client';
+ï»¿'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -332,7 +332,7 @@ export default function CheckoutPage() {
                     className="form-input"
                   >
                     <option value="Nederland">Nederland</option>
-                    <option value="België">België</option>
+                    <option value="Belgiï¿½">Belgiï¿½</option>
                     <option value="Duitsland">Duitsland</option>
                   </select>
                 </div>
@@ -458,7 +458,7 @@ export default function CheckoutPage() {
                       <p className="checkout-order-item-quantity">Aantal: {item.quantity}</p>
                     </div>
                     <span className="checkout-order-item-price">
-                      €{(item.price * item.quantity).toFixed(2)}
+                      ï¿½{(item.price * item.quantity).toFixed(2)}
                     </span>
                   </div>
                 ))}
@@ -469,19 +469,19 @@ export default function CheckoutPage() {
               <div className="cart-summary">
                 <div className="cart-summary-row subtotal">
                   <span>Subtotaal</span>
-                  <span>€{subtotal.toFixed(2)}</span>
+                  <span>ï¿½{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="cart-summary-row tax">
                   <span>BTW (21%)</span>
-                  <span>€{tax.toFixed(2)}</span>
+                  <span>ï¿½{tax.toFixed(2)}</span>
                 </div>
                 <div className="cart-summary-row">
                   <span>Verzending</span>
-                  <span>{shippingCost === 0 ? 'Gratis' : `€${shippingCost.toFixed(2)}`}</span>
+                  <span>{shippingCost === 0 ? 'Gratis' : `ï¿½${shippingCost.toFixed(2)}`}</span>
                 </div>
                 <div className="cart-summary-row total">
                   <span>Totaal</span>
-                  <span>€{finalTotal.toFixed(2)}</span>
+                  <span>ï¿½{finalTotal.toFixed(2)}</span>
                 </div>
               </div>
 
@@ -508,7 +508,7 @@ export default function CheckoutPage() {
                 ) : (
                   <>
                     <Lock size={18} />
-                    Betalen €{finalTotal.toFixed(2)}
+                    Betalen ï¿½{finalTotal.toFixed(2)}
                   </>
                 )}
               </button>

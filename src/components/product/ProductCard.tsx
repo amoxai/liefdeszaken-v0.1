@@ -94,12 +94,12 @@ export default function ProductCard({ product, showQuickView = true }: ProductCa
 
         <div className="product-card-price">
           <span className="product-card-price-current">
-            €{product.price.toFixed(2)}
+            ï¿½{product.price.toFixed(2)}
           </span>
           {product.compare_at_price && (
             <>
               <span className="product-card-price-original">
-                €{product.compare_at_price.toFixed(2)}
+                ï¿½{product.compare_at_price.toFixed(2)}
               </span>
               <span className="product-card-price-discount">
                 -{discountPercentage}%

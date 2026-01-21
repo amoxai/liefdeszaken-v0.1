@@ -140,12 +140,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             <div className="product-detail-price">
               <span className="product-detail-price-current">
-                €{product.price.toFixed(2)}
+                ï¿½{product.price.toFixed(2)}
               </span>
               {product.compare_at_price && (
                 <>
                   <span className="product-detail-price-original">
-                    €{product.compare_at_price.toFixed(2)}
+                    ï¿½{product.compare_at_price.toFixed(2)}
                   </span>
                   <span className="product-detail-price-discount">
                     -{discountPercentage}%

@@ -120,7 +120,7 @@ export default async function HomePage() {
               </div>
               <h3 className="feature-card-title">Gratis Verzending</h3>
               <p className="feature-card-description">
-                Gratis verzending bij bestellingen boven €50
+                Gratis verzending bij bestellingen boven ï¿½50
               </p>
             </div>
             <div className="feature-card">
@@ -161,7 +161,7 @@ export default async function HomePage() {
             <div className="section-header">
               <h2 className="section-title">Shop per Categorie</h2>
               <p className="section-subtitle">
-                Ontdek onze verschillende productcategorieën
+                Ontdek onze verschillende productcategorieï¿½n
               </p>
             </div>
             <div className="categories-grid">

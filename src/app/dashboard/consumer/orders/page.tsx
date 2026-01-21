@@ -67,7 +67,7 @@ export default async function OrdersPage() {
                         {order.payment_status === 'refunded' && 'Terugbetaald'}
                       </span>
                     </td>
-                    <td style={{ fontWeight: 600 }}>€{Number(order.total).toFixed(2)}</td>
+                    <td style={{ fontWeight: 600 }}>ï¿½{Number(order.total).toFixed(2)}</td>
                     <td>
                       <div style={{ display: 'flex', gap: '0.5rem' }}>
                         <Link

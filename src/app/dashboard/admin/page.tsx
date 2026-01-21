@@ -109,13 +109,13 @@ export default async function AdminDashboardPage() {
           <div>
             <p style={{ opacity: 0.9, marginBottom: '0.5rem' }}>Totale Omzet</p>
             <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-              €{data.totalRevenue.toLocaleString('nl-NL', { minimumFractionDigits: 2 })}
+              ï¿½{data.totalRevenue.toLocaleString('nl-NL', { minimumFractionDigits: 2 })}
             </h2>
           </div>
           <div style={{ textAlign: 'right' }}>
             <p style={{ opacity: 0.9, marginBottom: '0.5rem' }}>Deze Maand</p>
             <p style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-              €{data.thisMonthRevenue.toLocaleString('nl-NL', { minimumFractionDigits: 2 })}
+              ï¿½{data.thisMonthRevenue.toLocaleString('nl-NL', { minimumFractionDigits: 2 })}
             </p>
             <div style={{ 
               display: 'flex', 
@@ -181,7 +181,7 @@ export default async function AdminDashboardPage() {
             </div>
           </div>
           <div className="dashboard-stat-value">
-            €{(data.totalRevenue / Math.max(data.totalOrders, 1)).toFixed(0)}
+            ï¿½{(data.totalRevenue / Math.max(data.totalOrders, 1)).toFixed(0)}
           </div>
           <div className="dashboard-stat-label">Gem. Orderwaarde</div>
         </div>
@@ -280,7 +280,7 @@ export default async function AdminDashboardPage() {
                       {order.payment_status === 'failed' && 'Mislukt'}
                     </span>
                   </td>
-                  <td style={{ fontWeight: 600 }}>€{Number(order.total).toFixed(2)}</td>
+                  <td style={{ fontWeight: 600 }}>ï¿½{Number(order.total).toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

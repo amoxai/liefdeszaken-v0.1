@@ -133,7 +133,7 @@ export default async function B2BDashboardPage() {
               <FileText size={24} />
             </div>
           </div>
-          <div className="dashboard-stat-value">€{monthlySpent.toFixed(0)}</div>
+          <div className="dashboard-stat-value">ï¿½{monthlySpent.toFixed(0)}</div>
           <div className="dashboard-stat-label">Deze Maand</div>
         </div>
 
@@ -214,7 +214,7 @@ export default async function B2BDashboardPage() {
                         {order.status === 'delivered' && 'Bezorgd'}
                       </span>
                     </td>
-                    <td style={{ fontWeight: 600 }}>€{Number(order.subtotal).toFixed(2)}</td>
+                    <td style={{ fontWeight: 600 }}>ï¿½{Number(order.subtotal).toFixed(2)}</td>
                     <td>
                       {order.invoice_number ? (
                         <Link 
