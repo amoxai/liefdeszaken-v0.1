@@ -4,8 +4,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, Check, X } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
+import { getProductImageUrl } from '@/lib/storage';
 import AddToCartButton from '@/components/product/AddToCartButton';
 import type { Product } from '@/types';
+
+// Helper to get full image URL (supports both storage paths and full URLs)
+function getImageUrl(url: string): string {
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+  return getProductImageUrl(url);
+}
 
 interface ProductPageProps {
   params: Promise<{
@@ -91,7 +100,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="product-detail-main-image">
               {product.images && product.images.length > 0 ? (
                 <Image
-                  src={product.images[0].url}
+                  src={getImageUrl(product.images[0].url)}
                   alt={product.images[0].alt_text || product.name}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -118,7 +127,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.images.map((image, index) => (
                   <div key={image.id} className={`product-detail-thumbnail ${index === 0 ? 'active' : ''}`}>
                     <Image
-                      src={image.url}
+                      src={getImageUrl(image.url)}
                       alt={image.alt_text || `${product.name} ${index + 1}`}
                       fill
                       sizes="80px"

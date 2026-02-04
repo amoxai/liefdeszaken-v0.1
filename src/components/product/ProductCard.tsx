@@ -4,12 +4,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Heart, ShoppingBag, Eye, Star } from 'lucide-react';
 import { useCartStore } from '@/stores/cart-store';
+import { getProductImageUrl } from '@/lib/storage';
 import type { Product } from '@/types';
 import toast from 'react-hot-toast';
 
 interface ProductCardProps {
   product: Product;
   showQuickView?: boolean;
+}
+
+// Helper to get full image URL (supports both storage paths and full URLs)
+function getImageUrl(url: string): string {
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+  return getProductImageUrl(url);
 }
 
 export default function ProductCard({ product, showQuickView = true }: ProductCardProps) {
@@ -30,13 +39,18 @@ export default function ProductCard({ product, showQuickView = true }: ProductCa
 
   const isOutOfStock = product.stock_quantity <= 0;
 
+  // Get the first image URL
+  const imageUrl = product.images && product.images.length > 0 
+    ? getImageUrl(product.images[0].url) 
+    : null;
+
   return (
     <div className="product-card">
       <div className="product-card-image-wrapper">
-        {product.images && product.images.length > 0 ? (
+        {imageUrl ? (
           <Image
-            src={product.images[0].url}
-            alt={product.images[0].alt_text || product.name}
+            src={imageUrl}
+            alt={product.images?.[0]?.alt_text || product.name}
             fill
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className="product-card-image"

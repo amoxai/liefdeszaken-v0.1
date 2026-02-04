@@ -707,17 +707,45 @@ CREATE TRIGGER on_loyalty_transaction
 -- STORAGE BUCKETS
 -- =============================================
 
--- Create storage bucket for product images
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('product-images', 'product-images', true)
+-- Create storage buckets for all image types
+INSERT INTO storage.buckets (id, name, public) VALUES 
+  ('product-images', 'product-images', true),
+  ('category-images', 'category-images', true),
+  ('banners', 'banners', true),
+  ('logos', 'logos', true),
+  ('rewards-images', 'rewards-images', true)
 ON CONFLICT DO NOTHING;
 
--- Storage policy for product images (public read)
+-- =============================================
+-- STORAGE POLICIES - PUBLIC READ ACCESS
+-- =============================================
+
+-- Anyone can view all public images
 CREATE POLICY "Public can view product images"
 ON storage.objects FOR SELECT
 USING (bucket_id = 'product-images');
 
--- Admin can upload product images
+CREATE POLICY "Public can view category images"
+ON storage.objects FOR SELECT
+USING (bucket_id = 'category-images');
+
+CREATE POLICY "Public can view banners"
+ON storage.objects FOR SELECT
+USING (bucket_id = 'banners');
+
+CREATE POLICY "Public can view logos"
+ON storage.objects FOR SELECT
+USING (bucket_id = 'logos');
+
+CREATE POLICY "Public can view rewards images"
+ON storage.objects FOR SELECT
+USING (bucket_id = 'rewards-images');
+
+-- =============================================
+-- STORAGE POLICIES - ADMIN UPLOAD ACCESS
+-- =============================================
+
+-- Admin can upload to all buckets
 CREATE POLICY "Admin can upload product images"
 ON storage.objects FOR INSERT
 WITH CHECK (
@@ -728,11 +756,150 @@ WITH CHECK (
     )
 );
 
--- Admin can delete product images
+CREATE POLICY "Admin can upload category images"
+ON storage.objects FOR INSERT
+WITH CHECK (
+    bucket_id = 'category-images' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can upload banners"
+ON storage.objects FOR INSERT
+WITH CHECK (
+    bucket_id = 'banners' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can upload logos"
+ON storage.objects FOR INSERT
+WITH CHECK (
+    bucket_id = 'logos' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can upload rewards images"
+ON storage.objects FOR INSERT
+WITH CHECK (
+    bucket_id = 'rewards-images' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+-- =============================================
+-- STORAGE POLICIES - ADMIN DELETE ACCESS
+-- =============================================
+
+-- Admin can delete from all buckets
 CREATE POLICY "Admin can delete product images"
 ON storage.objects FOR DELETE
 USING (
     bucket_id = 'product-images' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can delete category images"
+ON storage.objects FOR DELETE
+USING (
+    bucket_id = 'category-images' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can delete banners"
+ON storage.objects FOR DELETE
+USING (
+    bucket_id = 'banners' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can delete logos"
+ON storage.objects FOR DELETE
+USING (
+    bucket_id = 'logos' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can delete rewards images"
+ON storage.objects FOR DELETE
+USING (
+    bucket_id = 'rewards-images' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+-- =============================================
+-- STORAGE POLICIES - ADMIN UPDATE ACCESS
+-- =============================================
+
+-- Admin can update files in all buckets
+CREATE POLICY "Admin can update product images"
+ON storage.objects FOR UPDATE
+USING (
+    bucket_id = 'product-images' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can update category images"
+ON storage.objects FOR UPDATE
+USING (
+    bucket_id = 'category-images' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can update banners"
+ON storage.objects FOR UPDATE
+USING (
+    bucket_id = 'banners' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can update logos"
+ON storage.objects FOR UPDATE
+USING (
+    bucket_id = 'logos' AND
+    EXISTS (
+        SELECT 1 FROM profiles 
+        WHERE id = auth.uid() AND role = 'admin'
+    )
+);
+
+CREATE POLICY "Admin can update rewards images"
+ON storage.objects FOR UPDATE
+USING (
+    bucket_id = 'rewards-images' AND
     EXISTS (
         SELECT 1 FROM profiles 
         WHERE id = auth.uid() AND role = 'admin'

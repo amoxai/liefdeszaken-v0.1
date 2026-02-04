@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   description: "Ontdek onze unieke collectie met liefde samengestelde producten. Voor alle mooie momenten in het leven.",
   keywords: ["webshop", "online winkelen", "liefdeszaken", "cadeaus", "producten"],
   authors: [{ name: "Liefdeszaken" }],
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "nl_NL",
